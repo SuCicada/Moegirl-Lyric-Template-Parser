@@ -1,9 +1,9 @@
-let JS
+JS = {
+    jquery: "https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"
+    , utils: window['DEBUG'] ? "utils.js" : "https://sucicada.github.io/Moegirl-Lyric-Template-Parser/utils.js"
+}
+
 window.onload = async function () {
-    JS = {
-        jquery: "https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"
-        , utils: window['DEBUG'] ? "utils.js" : "https://sucicada.github.io/Moegirl-Lyric-Template-Parser/utils.js"
-    }
     await build()
 }
 
@@ -42,7 +42,7 @@ async function parse(text) {
         width: "100%",
         reserveWidth: "267px"
     }
-    let colorReg = /{{color\|(\w+)\|(((?!{{color)[\w\W])+?)}}/g
+    let colorReg = /{{color\|([#\w]+)\|(((?!{{color)[\w\W])+?)}}/g
     let lyricKai = {}
     let lyrics = text
         // 提取 style
@@ -70,10 +70,10 @@ async function parse(text) {
                     `<span class="template-ruby-hidden">（</span>${hiragana.trim()}` +
                     `<span class="template-ruby-hidden">）</span></rt></ruby>`
             })
-        .replace(/{{color_block\|(\w+)}}/g, (_, color) =>
+        .replace(/{{color_block\|([#\w]+)}}/g, (_, color) =>
             `<span title="blue" style="width:10px;height:10px;background-color:${color};display:inline-block;"></span>`
         )
-        .replace(/{{coloredlink\|(\w+)\|(\W+)\|(((?!{{coloredlink)[\w\W])+?)}}/g,
+        .replace(/{{coloredlink\|([#\w]+)\|(\W+)\|(((?!{{coloredlink)[\w\W])+?)}}/g,
             (_, color, title, s) =>
                 `<a href="https://zh.moegirl.org.cn/${title}" title="${title}" style=""><span style="color:${color}">${s.trim()}</span></a>`
         )
@@ -123,7 +123,7 @@ async function parse(text) {
         <div class="mw-parser-output">
             ${lyrics}
         </div>`
-    console.log(res)
+    // console.log(res)
     // console.log(style)
     // console.log(lyricKai['original'])
     // console.log(lyricKai['translated'])

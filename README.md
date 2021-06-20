@@ -44,8 +44,7 @@
 
 
 ### 效果展示
-[效果展示](https://sucicada.github.io/Moegirl-Lyric-Template-Parser/example.html)
-
+- [Demo 效果展示](https://sucicada.github.io/Moegirl-Lyric-Template-Parser/example.html)
 ### 注意
 - 目前不支持在一个标签中嵌套多个 `LyricKai` 模板
 - 可能对于一些特殊的歌词模板没有支持, 后续会在使用的过程逐渐完善
