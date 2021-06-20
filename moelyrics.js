@@ -1,3 +1,8 @@
+JS = {
+    jquery: "https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"
+    , utils: "https://sucicada.github.io/Moegirl-Lyric-Template-Parser/utils.js"
+}
+
 function loadJS(url) {
     return new Promise((resolve, reject) => {
         const script = document.createElement('script');
@@ -12,7 +17,7 @@ function loadJS(url) {
 }
 
 async function addPTB() {
-    await loadJS("jquery.min.js")
+    await loadJS(JS.jquery)
     const button = $("#photrans-button");
     button.html('[<a href="javascript: void(0);"></a>]');
     const a = button.find("a");
@@ -28,7 +33,7 @@ async function addPTB() {
 
 
 async function parse(text) {
-    await loadJS('utils.js')
+    await loadJS(JS.utils)
 
     let style = {
         width: "100%",
@@ -106,7 +111,6 @@ async function parse(text) {
         <!--    这meta的作用就是删除默认的苹果工具栏和菜单栏。content有两个值”yes”和”no”,当我们需要显示工具栏和菜单栏时，这个行meta就不用加了，默认就是显示。-->
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<!--        <link rel="stylesheet" href="main.css">-->
         <style>
             ${getCSS()}
         </style>
@@ -174,12 +178,15 @@ async function build(div) {
         element = document.getElementsByTagName("lyrics")[0]
     }
     if (element) {
+        let begin = new Date().getTime();
         let text = element.innerHTML
         element.innerHTML = await parse(text)
         element.hidden = false
+        let end = new Date().getTime() - begin;
+        console.log(`build ${element.tagName} (${element.id}): ${end}ms`)
     }
 }
 
-window.onload = function () {
-    build()
+window.onload = async function () {
+    await build()
 }

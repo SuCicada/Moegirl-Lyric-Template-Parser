@@ -3,7 +3,7 @@
     Moegirl-Lyric-Template-Parser
 </h1>
 
-一个歌词模板解析器, 用于显示在网页中, js驱动.
+一个歌词模板解析器, 用于显示在网页中, js驱动.适配手机.
 
 歌词模板借鉴了[萌娘百科](https://zh.moegirl.org.cn/Mainpage)的[LyricKai模板](https://zh.moegirl.org.cn/Template:LyricsKai)
 
@@ -66,6 +66,9 @@
 因为 css 使用了 `white-space: pre-wrap`, 所以在解析替换填充歌词的时候要格外注意多余的空格和换行
 
 当然目前这种 js 的迭代正则替换的方式, 在性能上及其低下, 但得力于如今优秀的 CPU. 目前先这样处理.
+
+### todo
+- [ ] hexo 编译器版本
 
 ----
 (ps: 可以吐槽的吧, 我根本不会前端,不会css, 模板解析什么的也不懂, 绞尽脑汁花了几十个小时才搞出个这样.
