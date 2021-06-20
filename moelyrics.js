@@ -1,6 +1,10 @@
-JS = {
-    jquery: "https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"
-    , utils: DEBUG ? "utils.js" : "https://sucicada.github.io/Moegirl-Lyric-Template-Parser/utils.js"
+let JS
+window.onload = async function () {
+    JS = {
+        jquery: "https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"
+        , utils: window['DEBUG'] ? "utils.js" : "https://sucicada.github.io/Moegirl-Lyric-Template-Parser/utils.js"
+    }
+    await build()
 }
 
 function loadJS(url) {
@@ -187,8 +191,4 @@ async function build(div) {
         let end = new Date().getTime() - begin;
         console.log(`build ${element.tagName} (${element.id}): ${end}ms`)
     }
-}
-
-window.onload = async function () {
-    await build()
 }
