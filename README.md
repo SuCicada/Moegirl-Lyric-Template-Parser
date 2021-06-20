@@ -1,8 +1,18 @@
+
+<h1 align='center' style="color: #228b22">
+    Moegirl-Lyric-Template-Parser
+</h1>
+
 一个歌词模板解析器, 用于显示在网页中, js驱动.
 
 歌词模板借鉴了[萌娘百科](https://zh.moegirl.org.cn/Mainpage)的[LyricKai模板](https://zh.moegirl.org.cn/Template:LyricsKai)
 
+声明: 此项目只是学习娱乐使用, 解析逻辑是自制的, 和萌百本身无关.
+
 ### 使用方法:
+```
+<script src="https://sucicada.github.io/Moegirl-Lyric-Template-Parser/moelyrics.js"></script>
+```
 - 1: 第一种最简单的方法, 注意想要自动解析只能使用`lyrics`标签
     ```html
      <lyrics>
