@@ -1,7 +1,6 @@
 JS = {
     jquery: "https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"
-    // , utils: "https://sucicada.github.io/Moegirl-Lyric-Template-Parser/utils.js"
-    , utils: "utils.js"
+    , utils: DEBUG ? "utils.js" : "https://sucicada.github.io/Moegirl-Lyric-Template-Parser/utils.js"
 }
 
 function loadJS(url) {
