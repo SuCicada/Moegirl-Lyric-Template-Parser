@@ -1,6 +1,7 @@
 JS = {
     jquery: "https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"
-    , utils: "https://sucicada.github.io/Moegirl-Lyric-Template-Parser/utils.js"
+    // , utils: "https://sucicada.github.io/Moegirl-Lyric-Template-Parser/utils.js"
+    , utils: "utils.js"
 }
 
 function loadJS(url) {
@@ -31,7 +32,6 @@ async function addPTB() {
     });
 }
 
-
 async function parse(text) {
     await loadJS(JS.utils)
 
@@ -39,11 +39,11 @@ async function parse(text) {
         width: "100%",
         reserveWidth: "267px"
     }
-    let colorReg = /{{color\|(#\w+)\|(((?!{{color)[\w\W])+?)}}/g
+    let colorReg = /{{color\|(\w+)\|(((?!{{color)[\w\W])+?)}}/g
     let lyricKai = {}
     let lyrics = text
         // 提取 style
-        .replace("{{PT/B}}", match => {
+        .replace(/\s*({{PT\/B}}|{{Photrans2\/button}})\s*/g, _ => {
             addPTB()
             return `<div style="text-align: right;" id="photrans-button" data-to-visible="开启注音" data-to-hidden="关闭注音">
                 [<a href="javascript: void(0);" style="">关闭注音</a>]
@@ -67,12 +67,15 @@ async function parse(text) {
                     `<span class="template-ruby-hidden">（</span>${hiragana.trim()}` +
                     `<span class="template-ruby-hidden">）</span></rt></ruby>`
             })
+        .replace(/{{color_block\|(\w+)}}/g, (_, color) =>
+            `<span title="blue" style="width:10px;height:10px;background-color:${color};display:inline-block;"></span>`
+        )
+        .replace(/{{coloredlink\|(\w+)\|(\W+)\|(((?!{{coloredlink)[\w\W])+?)}}/g,
+            (_, color, title, s) =>
+                `<a href="https://zh.moegirl.org.cn/${title}" title="${title}" style=""><span style="color:${color}">${s.trim()}</span></a>`
+        )
         // lyric color
         // https://blog.stevenlevithan.com/archives/javascript-match-nested
-        .replace(/{{coloredlink\|(#\w+)\|(\W+)\|(((?!{{coloredlink)[\w\W])+?)}}/g,
-            (_, color, title, s) => {
-                return `<a href="https://zh.moegirl.org.cn/${title}" title="${title}" style=""><span style="color:${color}">${s.trim()}</span></a>`
-            })
         .iterator(str => {
                 return str.replace(colorReg,
                     (_, color, s) => `<span style="color:${color}">${s.trim()}</span>`)
@@ -117,7 +120,7 @@ async function parse(text) {
         <div class="mw-parser-output">
             ${lyrics}
         </div>`
-    // console.log(res)
+    console.log(res)
     // console.log(style)
     // console.log(lyricKai['original'])
     // console.log(lyricKai['translated'])

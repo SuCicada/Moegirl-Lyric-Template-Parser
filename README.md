@@ -13,17 +13,17 @@
 ```
 <script src="https://sucicada.github.io/Moegirl-Lyric-Template-Parser/moelyrics.js"></script>
 ```
-- 1: 第一种最简单的方法, 注意想要自动解析只能使用`lyrics`标签
+- 1. 第一种最简单的方法, 注意想要自动解析只能使用`lyrics`标签
     ```html
-     <lyrics>
+     <lyrics hidden>
         放置你的歌词
      </lyrics>
     <!-- 只要引入这个js 就能自动解析 lyrics 标签中的歌词了 -->
      <script src="https://sucicada.github.io/Moegirl-Lyric-Template-Parser/moelyrics.js"></script>
     ```
-- 2: 显示调用, 一般用于一个页面需要显示多段歌词, 这里不要使用`lyrics`标签
+- 2. 显示调用, 一般用于一个页面需要显示多段歌词, 这里不要使用`lyrics`标签
     ```html
-    <div id="main1>
+    <div id="main1 hidden>
         歌词
     </div>
     <script src="https://sucicada.github.io/Moegirl-Lyric-Template-Parser/moelyrics.js"></script>
@@ -31,7 +31,8 @@
         build("main1") // 通过传入 标签的id 来触发解析
     </script>
     ```
-- 3: 关于 hexo 的 markdown 博客使用
+- 3. 关于`hidden`属性的说明: 因为解析存在延时, 所以为了页面观感, 可以一开始将标签隐藏
+- 4. 关于 hexo 的 markdown 博客使用
 因为 markdown 支持 html 标签, 所以我们可以直接写, 但是因为 hexo 会对`{{}}`进行解析
 所以我们需要在我们的 html 前后加入
 ```
@@ -69,7 +70,7 @@
 
 ### todo
 - [ ] hexo 编译器版本
-
+- [ ] 支持 `VOCALOID Songbox Introduction` 解析
 ----
 (ps: 可以吐槽的吧, 我根本不会前端,不会css, 模板解析什么的也不懂, 绞尽脑汁花了几十个小时才搞出个这样.
 想要找人讨论也不认识玩前端的. 我只是想在能手机上背歌词而已,

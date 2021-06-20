@@ -8,6 +8,11 @@ String.prototype.iterator = function (action, canNext) {
     }
     return str
 }
+String.prototype.println = function () {
+    let a = this+""
+    console.log(a)
+    return a
+}
 /*
 function loadJS(url) {
     return new Promise((resolve, reject) => {
