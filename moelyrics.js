@@ -134,7 +134,8 @@ async function parse(text) {
 function getCSS() {
     return `<style>
     .mw-parser-output .Lyrics {
-        display: inline-block
+        display: inline-block;
+        font-size: 18px;
     }
     
     .mw-parser-output .Lyrics.Lyrics-has-ruby .Lyrics-original, .mw-parser-output .Lyrics.Lyrics-has-ruby .Lyrics-translated {
