@@ -117,9 +117,7 @@ async function parse(text) {
         <!--    这meta的作用就是删除默认的苹果工具栏和菜单栏。content有两个值”yes”和”no”,当我们需要显示工具栏和菜单栏时，这个行meta就不用加了，默认就是显示。-->
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <style>
-            ${getCSS()}
-        </style>
+        ${getCSS()}
         <div class="mw-parser-output">
             ${lyrics}
         </div>`
@@ -133,9 +131,12 @@ async function parse(text) {
 
 function getCSS() {
     return `<style>
+    .mw-parser-output {
+        font-size: 18px;
+    }
+
     .mw-parser-output .Lyrics {
         display: inline-block;
-        font-size: 18px;
     }
     
     .mw-parser-output .Lyrics.Lyrics-has-ruby .Lyrics-original, .mw-parser-output .Lyrics.Lyrics-has-ruby .Lyrics-translated {
