@@ -147,7 +147,7 @@ function clickSwitchTranslatedButton() {
     const button = $("#translated-button");
     const a = button.find("a");
     const {toVisible, toHidden} = button[0].dataset;
-    const translatedDiv = $(".Lyrics-translated")
+    const translatedDiv = $(".Lyrics-translated span")
     translatedDiv.toggle()
     a.text(translatedDiv.is(':visible') ? toHidden : toVisible);
 }
