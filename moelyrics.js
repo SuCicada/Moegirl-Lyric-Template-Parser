@@ -140,23 +140,16 @@ function getSwitchTranslatedButton() {
     return `
 <div style="text-align: right;" id="translated-button" data-to-visible="开启翻译" data-to-hidden="关闭翻译" onclick="clickSwitchTranslatedButton()"> 
                 [<a href="javascript: void(0);" style="">关闭翻译</a>]
-            </div>
-<script>
-function clickSwitchTranslatedButton() {
-    a.text(toHidden);
-    console.log(button[0].dataset)
-    button.on("click", () => {
-    const button = $("#translated-button");
-    button.html('[<a href="javascript: void(0);"></a>]');
-    const a = button.find("a");
-    const body = $("body");
-    const {toVisible, toHidden} = button[0].dataset;
-    body.toggleClass("Lyrics-translated-hidden");
-    console.log(body.hasClass("Lyrics-translated-hidden"))
-    a.text(body.hasClass("Lyrics-translated-hidden") ? toVisible : toHidden);
+            </div>`
 }
-</script>
-`
+
+function clickSwitchTranslatedButton() {
+    const button = $("#translated-button");
+    const a = button.find("a");
+    const {toVisible, toHidden} = button[0].dataset;
+    const translatedDiv = $(".Lyrics-translated")
+    translatedDiv.toggle()
+    a.text(translatedDiv.is(':visible') ? toHidden : toVisible);
 }
 
 function getCSS() {
@@ -203,16 +196,6 @@ function getCSS() {
     }
     
     body.photrans-ruby-hidden ruby.photrans > rt {
-        display: none;
-    }
-    
-    div[data-id="Lyrics-translated"]::before, .Lyrics-translated {
-        display: inline-block;
-        width: 0;
-        font-size: 0;
-    }
-    
-    body.Lyrics-translated-hidden {
         display: none;
     }
 </style>`
