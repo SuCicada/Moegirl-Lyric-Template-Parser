@@ -8,9 +8,9 @@ String.prototype.iterator = function (action, canNext) {
     }
     return str
 }
-String.prototype.println = function () {
-    let a = this+""
-    console.log(a)
+String.prototype.println = function (column) {
+    let a = this + ""
+    console.log(column + a)
     return a
 }
 /*

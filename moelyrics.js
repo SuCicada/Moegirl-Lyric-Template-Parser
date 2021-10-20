@@ -45,7 +45,10 @@ async function parse(text) {
     let colorReg = /{{color\|([#\w]+)\|(((?!{{color)[\w\W])+?)}}/g
     let lyricKai = {}
     let lyrics = text
+        // don't need this
+        .replace(/{{lj\|([\w\W]+?)}}/, (_, str) => str)
         // 提取 style
+        .println(50)
         .replace(/\s*({{PT\/B}}|{{Photrans2\/button}})\s*/g, _ => {
             addPTB()
             return `<div style="text-align: right;" id="photrans-button" data-to-visible="开启注音" data-to-hidden="关闭注音">
@@ -90,6 +93,7 @@ async function parse(text) {
                 lyricKai[key] = value.trim()
                 return ""
             })
+        // .println()
         .replace(/{{LyricsKai(\w\W)*}}/, (_, str) => {
             return `
         <div class="Lyrics Lyrics-has-ruby" style="width:calc(${style['width']} - ${style['reserveWidth']});">
