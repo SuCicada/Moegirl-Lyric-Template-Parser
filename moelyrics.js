@@ -20,23 +20,23 @@ function loadJS(url) {
     })
 }
 
-async function addPTB() {
-    await loadJS(JS.jquery)
+function clickPTB() {
     const button = $("#photrans-button");
     button.html('[<a href="javascript: void(0);"></a>]');
     const a = button.find("a");
     const body = $("body");
     const {toVisible, toHidden} = button[0].dataset;
     a.text(toHidden);
-    button.on("click", () => {
-        body.toggleClass("photrans-ruby-hidden");
-        a.text(body.hasClass("photrans-ruby-hidden") ? toVisible : toHidden);
-        return false;
-    });
+    // button.on("click", () => {
+    body.toggleClass("photrans-ruby-hidden");
+    a.text(body.hasClass("photrans-ruby-hidden") ? toVisible : toHidden);
+    // return false;
+    // });
 }
 
 async function parse(text) {
     await loadJS(JS.utils)
+    await loadJS(JS.jquery)
 
     let style = {
         width: "100%",
@@ -48,10 +48,8 @@ async function parse(text) {
         // don't need this
         .replace(/{{lj\|([\w\W]+?)}}/, (_, str) => str)
         // 提取 style
-        .println(50)
         .replace(/\s*({{PT\/B}}|{{Photrans2\/button}})\s*/g, _ => {
-            addPTB()
-            return `<div style="text-align: right;" id="photrans-button" data-to-visible="开启注音" data-to-hidden="关闭注音">
+            return `<div style="text-align: right;" id="photrans-button" onclick="clickPTB()" data-to-visible="开启注音" data-to-hidden="关闭注音">
                 [<a href="javascript: void(0);" style="">关闭注音</a>]
             </div>`
         })
@@ -70,9 +68,11 @@ async function parse(text) {
         // PT lyric
         .replace(/{{(PT|Photrans2|ruby)\|(.+?)\|(.+?)}}/g,
             (match, _, word, hiragana, index, str) => {
-                return `<ruby class="photrans"><rb>${word.trim()}</rb><rt style="font-size:0.75em">` +
+                return `<ruby class="photrans"><rb>${word.trim()}</rb>` +
+                    `<rt style="font-size:0.75em">` +
                     `<span class="template-ruby-hidden">（</span>${hiragana.trim()}` +
-                    `<span class="template-ruby-hidden">）</span></rt></ruby>`
+                    `<span class="template-ruby-hidden">）</span>` +
+                    `</rt></ruby>`
             })
         .replace(/{{color_block\|([#\w]+)}}/g, (_, color) =>
             `<span title="blue" style="width:10px;height:10px;background-color:${color};display:inline-block;"></span>`
@@ -124,6 +124,7 @@ async function parse(text) {
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         ${getCSS()}
         <div class="mw-parser-output">
+            ${getSwitchTranslatedButton()}
             ${lyrics}
         </div>`
     // console.log(lyrics)
@@ -133,6 +134,29 @@ async function parse(text) {
     // console.log(lyricKai['translated'])
     // console.log(lyric['original'].split("<br>"))
     return res
+}
+
+function getSwitchTranslatedButton() {
+    return `
+<div style="text-align: right;" id="translated-button" data-to-visible="开启翻译" data-to-hidden="关闭翻译" onclick="clickSwitchTranslatedButton()"> 
+                [<a href="javascript: void(0);" style="">关闭翻译</a>]
+            </div>
+<script>
+function clickSwitchTranslatedButton() {
+    a.text(toHidden);
+    console.log(button[0].dataset)
+    button.on("click", () => {
+    const button = $("#translated-button");
+    button.html('[<a href="javascript: void(0);"></a>]');
+    const a = button.find("a");
+    const body = $("body");
+    const {toVisible, toHidden} = button[0].dataset;
+    body.toggleClass("Lyrics-translated-hidden");
+    console.log(body.hasClass("Lyrics-translated-hidden"))
+    a.text(body.hasClass("Lyrics-translated-hidden") ? toVisible : toHidden);
+}
+</script>
+`
 }
 
 function getCSS() {
@@ -179,6 +203,16 @@ function getCSS() {
     }
     
     body.photrans-ruby-hidden ruby.photrans > rt {
+        display: none;
+    }
+    
+    div[data-id="Lyrics-translated"]::before, .Lyrics-translated {
+        display: inline-block;
+        width: 0;
+        font-size: 0;
+    }
+    
+    body.Lyrics-translated-hidden {
         display: none;
     }
 </style>`
