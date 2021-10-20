@@ -52,7 +52,8 @@ async function parse(text) {
                 [<a href="javascript: void(0);" style="">关闭注音</a>]
             </div>`
         })
-        .replace(/\|(lstyle|rstyle|reserveWidth)=([\w\W]+?)(?=(\||}}))/g,
+        // 提取开头中用于 css 中的 style
+        .replace(/\|(lstyle|rstyle|reserveWidth|width)=([\w\W]+?)(?=(\||}}))/g,
             (_, key, value) => {
                 style[key] = value.trim()
                 return ""
@@ -121,6 +122,7 @@ async function parse(text) {
         <div class="mw-parser-output">
             ${lyrics}
         </div>`
+    // console.log(lyrics)
     // console.log(res)
     // console.log(style)
     // console.log(lyricKai['original'])
