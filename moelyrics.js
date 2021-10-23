@@ -45,13 +45,11 @@ async function parse(text) {
     let colorReg = /{{color\|([#\w]+)\|(((?!{{color)[\w\W])+?)}}/g
     let lyricKai = {}
     let lyrics = text
-        // don't need this
-        .replace(/{{lj\|([\w\W]+?)}}/, (_, str) => str)
         // 提取 style
         .replace(/\s*({{PT\/B}}|{{Photrans2\/button}})\s*/g, _ => {
-            return `<div style="text-align: right;" id="photrans-button" onclick="clickPTB()" data-to-visible="开启注音" data-to-hidden="关闭注音">
-                [<a href="javascript: void(0);" style="">关闭注音</a>]
-            </div>`
+            return `<div style="text-align: right;" id="photrans-button" onclick="clickPTB()" data-to-visible="开启注音" data-to-hidden="关闭注音">` +
+                `[<a href="javascript: void(0);" style="">关闭注音</a>]` +
+                `</div>`
         })
         // 提取开头中用于 css 中的 style
         .replace(/\|(lstyle|rstyle|reserveWidth|width)=([\w\W]+?)(?=(\||}}))/g,
@@ -59,11 +57,11 @@ async function parse(text) {
                 style[key] = value.trim()
                 return ""
             })
-        .replace(/'{5}([\W\w]+?)'{5}/g, `<i><b>$1</b></i>`)
-        .replace(/'{3}([\W\w]+?)'{3}/g, `<i>$1</i>`)
+        .replace(/'{5}([\W\w]+?)'{5}/g, ` < i > < b > $1 < /b></i > `)
+        .replace(/'{3}([\W\w]+?)'{3}/g, ` < i > $1 < /i>`)
         .replace(/'{2}([\W\w]+?)'{2}/g, `<b>$1</b>`)
-        // 整理回车, 用于之后的 br 换行替换, 以防乱格式
         .replace(/[\n]+[\t ]*\|(original|translated)=[\t ]*[\n]+/g, `\|$1=\n`)
+        // 整理回车, 用于之后的 br 换行替换, 以防乱格式
         .replace(/\n/g, `<br>`)
         // PT lyric
         .replace(/{{(PT|Photrans2|ruby)\|(.+?)\|(.+?)}}/g,
@@ -88,6 +86,11 @@ async function parse(text) {
                     (_, color, s) => `<span style="color:${color}">${s.trim()}</span>`)
             }, str => colorReg.test(str)
         )
+        // don't need this
+        .replace(/{{lj\|([\w\W.]+?)}}/, (_, str) => {
+            console.log(str)
+            return str.trim()
+        })
         .replace(/\|(original|translated)=([\w\W]+?)(?=(\||}}))/g,
             (_, key, value) => {
                 lyricKai[key] = value.trim()
