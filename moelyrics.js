@@ -87,10 +87,7 @@ async function parse(text) {
             }, str => colorReg.test(str)
         )
         // don't need this
-        .replace(/{{lj\|([\w\W.]+?)}}/, (_, str) => {
-            console.log(str)
-            return str.trim()
-        })
+        .replace(/{{lj\|([\w\W.]+?)}}/, (_, str) => str.trim())
         .replace(/\|(original|translated)=([\w\W]+?)(?=(\||}}))/g,
             (_, key, value) => {
                 lyricKai[key] = value.trim()
