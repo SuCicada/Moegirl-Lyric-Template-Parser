@@ -57,8 +57,8 @@ async function parse(text) {
                 style[key] = value.trim()
                 return ""
             })
-        .replace(/'{5}([\W\w]+?)'{5}/g, ` < i > < b > $1 < /b></i > `)
-        .replace(/'{3}([\W\w]+?)'{3}/g, ` < i > $1 < /i>`)
+        .replace(/'{5}([\W\w]+?)'{5}/g, `<i><b>$1</b></i>`)
+        .replace(/'{3}([\W\w]+?)'{3}/g, `<i>$1</i>`)
         .replace(/'{2}([\W\w]+?)'{2}/g, `<b>$1</b>`)
         .replace(/[\n]+[\t ]*\|(original|translated)=[\t ]*[\n]+/g, `\|$1=\n`)
         // 整理回车, 用于之后的 br 换行替换, 以防乱格式
