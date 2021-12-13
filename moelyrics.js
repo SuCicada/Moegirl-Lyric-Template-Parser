@@ -33,6 +33,7 @@ function clickPTB() {
     // return false;
     // });
 }
+
 function parse(text) {
 
     let style = {
@@ -42,13 +43,11 @@ function parse(text) {
     let colorReg = /{{color\|([#\w]+)\|(((?!{{color)[\w\W])+?)}}/g
     let lyricKai = {}
     let lyrics = text
-        // don't need this
-        .replace(/{{lj\|([\w\W]+?)}}/, (_, str) => str)
         // 提取 style
         .replace(/\s*({{PT\/B}}|{{Photrans2\/button}})\s*/g, _ => {
-            return `<div style="text-align: right;" id="photrans-button" onclick="clickPTB()" data-to-visible="开启注音" data-to-hidden="关闭注音">
-                [<a href="javascript: void(0);" style="">关闭注音</a>]
-            </div>`
+            return `<div style="text-align: right;" id="photrans-button" onclick="clickPTB()" data-to-visible="开启注音" data-to-hidden="关闭注音">` +
+                `[<a href="javascript: void(0);" style="">关闭注音</a>]` +
+                `</div>`
         })
         // 提取开头中用于 css 中的 style
         .replace(/\|(lstyle|rstyle|reserveWidth|width)=([\w\W]+?)(?=(\||}}))/g,
@@ -59,8 +58,8 @@ function parse(text) {
         .replace(/'{5}([\W\w]+?)'{5}/g, `<i><b>$1</b></i>`)
         .replace(/'{3}([\W\w]+?)'{3}/g, `<i>$1</i>`)
         .replace(/'{2}([\W\w]+?)'{2}/g, `<b>$1</b>`)
-        // 整理回车, 用于之后的 br 换行替换, 以防乱格式
         .replace(/[\n]+[\t ]*\|(original|translated)=[\t ]*[\n]+/g, `\|$1=\n`)
+        // 整理回车, 用于之后的 br 换行替换, 以防乱格式
         .replace(/\n/g, `<br>`)
         // PT lyric
         .replace(/{{(PT|Photrans2|ruby)\|(.+?)\|(.+?)}}/g,
@@ -85,12 +84,14 @@ function parse(text) {
                     (_, color, s) => `<span style="color:${color}">${s.trim()}</span>`)
             }, str => colorReg.test(str)
         )
+        // don't need this
+        .replace(/{{lj\|([\w\W.]+?)}}/, (_, str) => str.trim())
         .replace(/\|(original|translated)=([\w\W]+?)(?=(\||}}))/g,
             (_, key, value) => {
                 lyricKai[key] = value.trim()
                 return ""
             })
-        .println()
+        // .println()
         .replace(/{{LyricsKai(\w\W)*}}/, (_, str) => {
             return `
         <div class="Lyrics Lyrics-has-ruby" style="width:calc(${style['width']} - ${style['reserveWidth']});">
@@ -137,23 +138,16 @@ function getSwitchTranslatedButton() {
     return `
 <div style="text-align: right;" id="translated-button" data-to-visible="开启翻译" data-to-hidden="关闭翻译" onclick="clickSwitchTranslatedButton()"> 
                 [<a href="javascript: void(0);" style="">关闭翻译</a>]
-            </div>
-<script>
-function clickSwitchTranslatedButton() {
-    a.text(toHidden);
-    console.log(button[0].dataset)
-    button.on("click", () => {
-    const button = $("#translated-button");
-    button.html('[<a href="javascript: void(0);"></a>]');
-    const a = button.find("a");
-    const body = $("body");
-    const {toVisible, toHidden} = button[0].dataset;
-    body.toggleClass("Lyrics-translated-hidden");
-    console.log(body.hasClass("Lyrics-translated-hidden"))
-    a.text(body.hasClass("Lyrics-translated-hidden") ? toVisible : toHidden);
+            </div>`
 }
-</script>
-`
+
+function clickSwitchTranslatedButton() {
+    const button = $("#translated-button");
+    const a = button.find("a");
+    const {toVisible, toHidden} = button[0].dataset;
+    const translatedDiv = $(".Lyrics-translated span")
+    translatedDiv.toggle()
+    a.text(translatedDiv.is(':visible') ? toHidden : toVisible);
 }
 
 function getCSS() {
@@ -202,16 +196,6 @@ function getCSS() {
     body.photrans-ruby-hidden ruby.photrans > rt {
         display: none;
     }
-    
-    div[data-id="Lyrics-translated"]::before, .Lyrics-translated {
-        display: inline-block;
-        width: 0;
-        font-size: 0;
-    }
-    
-    body.Lyrics-translated-hidden {
-        display: none;
-    }
 </style>`
 }
 
@@ -228,7 +212,7 @@ async function build(div) {
 
         await loadJS(JS.utils)
         await loadJS(JS.jquery)
-
+        
         element.innerHTML = parse(text)
         element.hidden = false
         let end = new Date().getTime() - begin;
