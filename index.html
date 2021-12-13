@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<!-- https://www.runoob.com/try/try.php?filename=trycss_website_layout_blog -->
+<!-- https://www.runoob.com/try/try.php?filename=trycss_website_layout_grid -->
+
+<head>
+    <meta charset="utf-8">
+    <title>Moegirl Lyric Template Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 20;
+        }
+
+        /* 头部样式 */
+        .header {
+            background-color: #f1f1f1;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* 导航条 */
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        /* 导航链接 */
+        .topnav a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        /* 链接 - 修改颜色 */
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* 创建三个相等的列 */
+        .column {
+            float: left;
+            width: 50%;
+        }
+
+        /* 列后清除浮动 */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* 响应式布局 - 小于 600 px 时改为上下布局 */
+        @media screen and (max-width: 600px) {
+            .column {
+                width: 100%;
+            }
+        }
+
+
+        /* 底部 */
+        .footer {
+            padding: 20px;
+            text-align: center;
+            background: #ddd;
+            margin-top: 20px;
+        }
+    </style>
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="moelyrics.js"></script>
+    <script src="utils.js"></script>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Moegirl Lyric Template Parser</h1>
+        <p>适用于萌娘百科的歌词模板解析器</p>
+    </div>
+
+    <div class="topnav">
+        <a href="https://github.com/SuCicada/Moegirl-Lyric-Template-Parser">GitHub</a>
+        <a href="https://github.com/SuCicada/Moegirl-Lyric-Template-Generator">Moegirl Lyric Template Generator</a>
+        <a href="#">链接</a>
+    </div>
+
+    <div class="row" id="main">
+        <textarea id="template" class="column" style="resize: none;" rows="20" cols="50%" 
+        v-model="template" 
+        @input="template2lyrics">
+        </textarea>
+
+        <textarea class="column" readonly style="resize: none;" rows="20" cols="50%"
+        >{{ lyrics }}</textarea>
+    </div>
+
+    <div class="footer">
+        <h2>底部区域</h2>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#main',
+            data: {
+                template: "",
+                lyrics: ""
+            },
+            methods: {
+                template2lyrics: function () {
+                    res = parse(this.template)
+                    this.lyrics = res
+                }
+            },
+        });
+    </script>
+</body>
+
+</html>

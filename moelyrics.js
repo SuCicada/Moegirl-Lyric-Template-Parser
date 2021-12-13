@@ -33,10 +33,7 @@ function clickPTB() {
     // return false;
     // });
 }
-
-async function parse(text) {
-    await loadJS(JS.utils)
-    await loadJS(JS.jquery)
+function parse(text) {
 
     let style = {
         width: "100%",
@@ -93,7 +90,7 @@ async function parse(text) {
                 lyricKai[key] = value.trim()
                 return ""
             })
-        // .println()
+        .println()
         .replace(/{{LyricsKai(\w\W)*}}/, (_, str) => {
             return `
         <div class="Lyrics Lyrics-has-ruby" style="width:calc(${style['width']} - ${style['reserveWidth']});">
@@ -228,7 +225,11 @@ async function build(div) {
     if (element) {
         let begin = new Date().getTime();
         let text = element.innerHTML
-        element.innerHTML = await parse(text)
+
+        await loadJS(JS.utils)
+        await loadJS(JS.jquery)
+
+        element.innerHTML = parse(text)
         element.hidden = false
         let end = new Date().getTime() - begin;
         console.log(`build ${element.tagName} (${element.id}): ${end}ms`)
