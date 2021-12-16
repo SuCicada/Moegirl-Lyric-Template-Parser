@@ -2,8 +2,12 @@
 //     jquery: "https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"
 //     , utils: window['DEBUG'] ? "utils.js" : "https://sucicada.github.io/Moegirl-Lyric-Template-Parser/utils.js"
 // }
-window.onload = async function () {
-    await build()
+// if (AUTO_PARSE_MOELYRICS != false) {
+if (AUTO_PARSE_MOELYRICS) {
+    console.log("AUTO_PARSE_MOELYRICS = true")
+    window.onload = async function () {
+        await build()
+    }
 }
 
 window.parseMoeLyrics = parseMoeLyrics
@@ -16,7 +20,7 @@ function loadJS(url) {
         script.onload = function () {
             console.log(url + " load success")
             resolve && resolve();
-        };moelyrics
+        }; moelyrics
         document.getElementsByTagName('head')[0].appendChild(script);
     })
 }
@@ -137,7 +141,7 @@ function parseMoeLyrics(text) {
 }
 function getSwitchTranslatedButton() {
     /*html*/
-    return  `
+    return `
 <div style="text-align: right;" id="translated-button" data-to-visible="开启翻译" data-to-hidden="关闭翻译" 
 onclick="clickSwitchTranslatedButton()"> 
                 [<a href="javascript: void(0);" style="">关闭翻译</a>]

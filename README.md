@@ -13,13 +13,17 @@
 ```
 <script src="https://sucicada.github.io/Moegirl-Lyric-Template-Parser/moelyrics.js"></script>
 ```
-- 1. 第一种最简单的方法, 注意想要自动解析只能使用`lyrics`标签
+- 1. ~~第一种最简单的方法, 注意想要自动解析只能~~使用`lyrics`标签
     ```html
      <lyrics hidden>
         放置你的歌词
      </lyrics>
     <!-- 只要引入这个js 就能自动解析 lyrics 标签中的歌词了 -->
-     <script src="https://sucicada.github.io/Moegirl-Lyric-Template-Parser/moelyrics.js"></script>
+    <script>
+        AUTO_PARSE_MOELYRICS = true
+    </script>
+     <script src="sucicada.github.io/Moegirl-Lyric-Template-Parser/dist/moelyrics.min.js"></script>
+
     ```
 - 2. 显示调用, 一般用于一个页面需要显示多段歌词, 这里不要使用`lyrics`标签
     ```html
