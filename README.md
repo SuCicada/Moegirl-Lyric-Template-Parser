@@ -26,7 +26,7 @@
     <div id="main1 hidden>
         歌词
     </div>
-    <script src="https://sucicada.github.io/Moegirl-Lyric-Template-Parser/moelyrics.js"></script>
+    <script src="https://sucicada.github.io/Moegirl-Lyric-Template-Parser/dist/moelyrics.min.js"></script>
     <script>
         build("main1") // 通过传入 标签的id 来触发解析
     </script>
