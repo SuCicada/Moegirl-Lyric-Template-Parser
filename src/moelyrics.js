@@ -2,12 +2,12 @@
 //     jquery: "https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"
 //     , utils: window['DEBUG'] ? "utils.js" : "https://sucicada.github.io/Moegirl-Lyric-Template-Parser/utils.js"
 // }
-// if (AUTO_PARSE_MOELYRICS != false) {
-if (AUTO_PARSE_MOELYRICS) {
+if (AUTO_PARSE_MOELYRICS != false) {
+    // if (AUTO_PARSE_MOELYRICS) {
     console.log("AUTO_PARSE_MOELYRICS = true")
-    window.onload = async function () {
-        await build()
-    }
+    // window.onload = async function () {
+    build()
+    // }
 }
 
 window.parseMoeLyrics = parseMoeLyrics
@@ -209,7 +209,7 @@ function getCSS() {
 </style>`
 }
 
-async function build(div) {
+function build(div) {
     let element
     if (div) {
         element = document.getElementById(div)
