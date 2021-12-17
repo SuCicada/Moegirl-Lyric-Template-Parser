@@ -27,7 +27,8 @@ function loadJS(url) {
 
 function clickPTB() {
     const button = $("#photrans-button");
-    button.html('[<a href="javascript: void(0);" disable></a>]');
+    // button.html('[<a href="javascript: void(0);" disable style="pointer-events: none;"></a>]');
+    
     const a = button.find("a");
     const body = $("body");
     const { toVisible, toHidden } = button[0].dataset;
@@ -50,8 +51,9 @@ function parseMoeLyrics(text) {
     let lyrics = text
         // 提取 style
         .replace(/\s*({{PT\/B}}|{{Photrans2\/button}})\s*/g, _ => {
+            /* html */
             return `<div style="text-align: right;" id="photrans-button" onclick="clickPTB()" data-to-visible="开启注音" data-to-hidden="关闭注音">` +
-                `[<a href="javascript: void(0);" style="">关闭注音</a>]` +
+                `[<a href="javascript: void(0);" style="pointer-events: none;" disable>关闭注音</a>]` +
                 `</div>`
         })
         // 提取开头中用于 css 中的 style
