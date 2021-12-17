@@ -144,8 +144,8 @@ function getSwitchTranslatedButton() {
     return `
 <div style="text-align: right;" id="translated-button" data-to-visible="开启翻译" data-to-hidden="关闭翻译" 
 onclick="clickSwitchTranslatedButton()"> 
-                [<a href="javascript: void(0);" disable style="">关闭翻译</a>]
-            </div>
+    [<a href="javascript: void(0);" style="pointer-events: none;" disable>关闭翻译</a>]
+</div>
 `
 }
 
