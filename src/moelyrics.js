@@ -41,6 +41,9 @@ function clickPTB() {
     // });
 }
 
+function parseVocaloidBox(text) {
+}
+
 function parseMoeLyrics(text) {
 
     let style = {
@@ -70,8 +73,10 @@ function parseMoeLyrics(text) {
         // 整理回车, 用于之后的 br 换行替换, 以防乱格式
         .replace(/\n/g, `<br>`)
         // PT lyric
-        .replace(/{{(PT|Photrans2|ruby)\|(.+?)\|(.+?)\|?.*?}}/g,
+        .replace(/{{(PT|Photrans2|ruby)\|(.+?)\|(.+?)}}/g,
             (match, _, word, hiragana, index, str) => {
+                // for eg: {{ruby|ニイハオハンユー|你好汉语|ja|zh}}
+                hiragana = hiragana.replace(/\|.*/, '')
                 return `<ruby class="photrans"><rb>${word.trim()}</rb>` +
                     `<rt style="font-size:0.75em">` +
                     `<span class="template-ruby-hidden">（</span>${hiragana.trim()}` +
