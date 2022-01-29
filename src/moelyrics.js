@@ -20,7 +20,8 @@ function loadJS(url) {
         script.onload = function () {
             console.log(url + " load success")
             resolve && resolve();
-        }; moelyrics
+        };
+        moelyrics
         document.getElementsByTagName('head')[0].appendChild(script);
     })
 }
@@ -28,10 +29,10 @@ function loadJS(url) {
 function clickPTB() {
     const button = $("#photrans-button");
     // button.html('[<a href="javascript: void(0);" disable style="pointer-events: none;"></a>]');
-    
+
     const a = button.find("a");
     const body = $("body");
-    const { toVisible, toHidden } = button[0].dataset;
+    const {toVisible, toHidden} = button[0].dataset;
     a.text(toHidden);
     // button.on("click", () => {
     body.toggleClass("photrans-ruby-hidden");
@@ -69,7 +70,7 @@ function parseMoeLyrics(text) {
         // 整理回车, 用于之后的 br 换行替换, 以防乱格式
         .replace(/\n/g, `<br>`)
         // PT lyric
-        .replace(/{{(PT|Photrans2|ruby)\|(.+?)\|(.+?)}}/g,
+        .replace(/{{(PT|Photrans2|ruby)\|(.+?)\|(.+?)\|?.*?}}/g,
             (match, _, word, hiragana, index, str) => {
                 return `<ruby class="photrans"><rb>${word.trim()}</rb>` +
                     `<rt style="font-size:0.75em">` +
@@ -87,12 +88,13 @@ function parseMoeLyrics(text) {
         // lyric color
         // https://blog.stevenlevithan.com/archives/javascript-match-nested
         .iterator(str => {
-            return str.replace(colorReg,
-                (_, color, s) => `<span style="color:${color}">${s.trim()}</span>`)
-        }, str => colorReg.test(str)
+                return str.replace(colorReg,
+                    (_, color, s) => `<span style="color:${color}">${s.trim()}</span>`)
+            }, str => colorReg.test(str)
         )
         // don't need this
-        .replace(/{{lj\|([\w\W.]+?)}}/, (_, str) => str.trim())
+        .replace(/{{lj\|([\w\W.]+?)}}/g, (_, str) => str.trim())
+        .replace(/{{lang\|zh\|([\w\W.]+?)}}/g, (_, str) => str.trim())
         .replace(/\|(original|translated)=([\w\W]+?)(?=(\||}}))/g,
             (_, key, value) => {
                 lyricKai[key] = value.trim()
@@ -115,7 +117,7 @@ function parseMoeLyrics(text) {
                     }
                     return lines
                 }
-                )()}
+            )()}
         </div>`
         })
 
@@ -141,6 +143,7 @@ function parseMoeLyrics(text) {
     // console.log(lyric['original'].split("<br>"))
     return res
 }
+
 function getSwitchTranslatedButton() {
     /*html*/
     return `
@@ -154,7 +157,7 @@ onclick="clickSwitchTranslatedButton()">
 function clickSwitchTranslatedButton() {
     const button = $("#translated-button");
     const a = button.find("a");
-    const { toVisible, toHidden } = button[0].dataset;
+    const {toVisible, toHidden} = button[0].dataset;
     const translatedDiv = $(".Lyrics-translated span")
     translatedDiv.toggle()
     a.text(translatedDiv.is(':visible') ? toHidden : toVisible);
