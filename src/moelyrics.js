@@ -41,9 +41,6 @@ function clickPTB() {
     // });
 }
 
-function parseVocaloidBox(text) {
-}
-
 function parseMoeLyrics(text) {
 
     let style = {
