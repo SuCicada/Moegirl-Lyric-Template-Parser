@@ -136,6 +136,7 @@ function parseMoeLyrics(text) {
         <div class="mw-parser-output">
             ${(() => {
         if (lyricKai['translated']) return getSwitchTranslatedButton()
+        else return "";
     })()}
             ${lyrics}
         </div>`
