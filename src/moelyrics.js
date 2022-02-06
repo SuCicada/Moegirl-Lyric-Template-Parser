@@ -134,7 +134,9 @@ function parseMoeLyrics(text) {
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         ${getCSS()}
         <div class="mw-parser-output">
-            ${getSwitchTranslatedButton()}
+            ${(() => {
+        if (lyricKai['translated']) return getSwitchTranslatedButton()
+    })()}
             ${lyrics}
         </div>`
     // console.log(lyrics)
