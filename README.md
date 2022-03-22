@@ -11,7 +11,7 @@
 
 ### 使用方法:
 ```
-<script src="https://sucicada.github.io/Moegirl-Lyric-Template-Parser/moelyrics.js"></script>
+<script src="sucicada.github.io/Moegirl-Lyric-Template-Parser/dist/moelyrics.min.js"></script>
 ```
 - 1. 第一种最简单的方法, 注意想要自动解析只能使用`lyrics`标签
     ```html
