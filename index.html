@@ -69,7 +69,7 @@
         /* 底部 */
         .footer {
             padding: 20px;
-            text-align: center;
+            /*text-align: center;*/
             background: #ddd;
             margin-top: 20px;
         }
@@ -82,7 +82,7 @@
 </head>
 
 <body>
-
+<div id="main">
     <div class="header">
         <h1>Moegirl Lyric Template Parser</h1>
         <p>适用于萌娘百科的歌词模板解析器</p>
@@ -91,13 +91,13 @@
     <div class="topnav">
         <a href="https://sucicada.github.io/">SuCicada Home</a>
         <a href="https://github.com/SuCicada/Moegirl-Lyric-Template-Parser">GitHub</a>
-        <a href="http://meohira.api.sucicada.ml">Moegirl Lyric Template Generator</a>
+        <a href="https://sucicada.github.io/Moegirl-Lyric-Template-Generator/">Moegirl Lyric Template Generator</a>
     </div>
 
-    <div class="row" id="main">
-        <textarea id="template" class="column" style="resize: none;" rows="20" cols="50%" 
-        v-model="template" 
-        @input="template2lyrics">
+    <div class="row">
+        <textarea id="template" class="column" style="resize: none;" rows="20" cols="50%"
+                  v-model="template"
+                  @input="template2lyrics">
         </textarea>
 
         <textarea class="column" readonly style="resize: none;" rows="20" cols="50%"
@@ -105,24 +105,26 @@
     </div>
 
     <div class="footer">
-        <h2>底部区域</h2>
+        <!--        <h2>底部区域</h2>-->
+        <div v-html="lyrics"></div>
     </div>
-    <script>
-        var vm = new Vue({
-            el: '#main',
-            data: {
-                template: "",
-                lyrics: ""
-            },
-            methods: {
-                template2lyrics: function () {
-                    console.log(this.template)
-                    res = parseMoeLyrics(this.template)
-                    this.lyrics = res
-                }
-            },
-        });
-    </script>
+</div>
+<script>
+    var vm = new Vue({
+        el: '#main',
+        data: {
+            template: "",
+            lyrics: ""
+        },
+        methods: {
+            template2lyrics: function () {
+                console.log(this.template)
+                res = parseMoeLyrics(this.template)
+                this.lyrics = res
+            }
+        },
+    });
+</script>
 </body>
 
 </html>
