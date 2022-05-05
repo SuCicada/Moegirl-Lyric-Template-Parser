@@ -1,36 +1,104 @@
 
-<poem>
-我欲成为那不可能成为的人　在这混乱大地上扎根
-我欲成为那不可能成为的人　毫无愧疚地度过此生
-然而现实点燃了漫天烟火　焚烧了我的虹膜
-我的歌声终于也失了魂魄　苍白到不可捉摸
+{{Photrans/button}}
+{{LyricsKai|lstyle=color:#000|rstyle=color:#000|containerstyle=padding:2em
+|original=
+{{Photrans|少女|しょうじょ}}、いたいけな{{Photrans|瞳|ひとみ}}
+{{Photrans|奥底|おくそこ}}{{Photrans|潜|ひそ}}む{{Photrans|陵辱|りょうじょく}}の{{Photrans|記憶|きおく}}
+{{Photrans|少女|しょうじょ}}、{{Photrans|恵|めぐ}}まれた{{Photrans|美貌|びぼう}}
+それを{{Photrans|憎|にく}}む{{Photrans|魔女|まじょ}}、{{Photrans|裁判|さいばん}}、ふぁっきゅー
 
-若是在知晓一切的他们眼中　我们连活着可能都做不到吧
-若是在高于一切的他们眼中　我们连生命可能都算不上吧
-忙碌于这看似繁华的荒野中　坚守着一份脆弱可笑的从容
-然后抬头再看看寂静的宇宙　告诉我世界还是照常运转吧
+{{Photrans|言|い}}われも{{Photrans|無|な}}い{{Photrans|嘘|うそ}}　{{Photrans|噂|うわさ}}　{{Photrans|捏造|ねつぞう}}され
+{{Photrans|余|あま}}す{{Photrans|所|ところ}}{{Photrans|無|な}}く{{Photrans|責|せ}}め{{Photrans|立|た}}てられ
+{{Photrans|滅|めつ}}する{{Photrans|希望|きぼう}}　{{Photrans|滅|めつ}}する{{Photrans|精神|せいしん}}
+{{Photrans|蝕|むしば}}まれる{{Photrans|毎日|まいにち}}は{{Photrans|続|つづ}}く
 
-欲望欲望重复叠加到最后　看呐是谁还憧憬被接受
-错误错误层层放大到最后　刽子手忘了挥刀的缘由
-那些個冲锋陷阵的战士背后　贵妇们摇着象牙扇点头
-我的歌声早就该摒弃魂魄　随波逐流至死最好不过
+DIE!　DIE!!　DIE!!!
+DIE!　DIE!!　DIE!!!
 
-若是在知晓一切的他们眼中　我们连活着可能都做不到吧
-若是在高于一切的他们眼中　我们连生命可能都算不上吧
-思想越过六千层腐烂的美梦　浇筑成一台链接神经的水泵
-我的星球还没学会自西向东　就要被迫融进这条神的河流
+{{Photrans|行|い}}け　{{Photrans|戦|たたか}}え　{{Photrans|骸|むくろ}}は
+{{Photrans|荒野|こうや}}を{{Photrans|駆|か}}けて{{Photrans|死|し}}を{{Photrans|分|わ}}かつ
+{{Photrans|本能|ほんのう}}のままに　{{Photrans|甚振|いたぶ}}れ
+{{Photrans|怪我|けが}}してもどうせ{{Photrans|死|し}}んでるもん
 
-你不得被奉为君王　就算浑身玉饰金镶
-就算乐于征战沙场　也不得被奉为君王
+{{Photrans|少女|しょうじょ}}、{{Photrans|忌々|いまいま}}しき{{Photrans|日々|ひび}}
+{{Photrans|刻|きざ}}み{{Photrans|付|つ}}けられた{{Photrans|痕|あと}}が{{Photrans|醜|みにく}}い
+{{Photrans|少女|しょうじょ}}、{{Photrans|辛|から}}い{{Photrans|誘惑|ゆうわく}}が
+「{{Photrans|殺|ころ}}せよ」「{{Photrans|殺|ころ}}せ」　そうしようか！ふぁっきゅー
 
-因你的爱你的恨　你的笑你的泪
-都恶心到令人发狂
-尽情
-憎恶吧厌烦吧愤怒吧悲伤吧逃避吧应对吧反驳吧审判吧
-你又能拿我怎么样
+{{Photrans|報|むく}}い{{Photrans|戒|いまし}}め　{{Photrans|誘|さそ}}え
+あいつに{{Photrans|慈悲|じひ}}など{{Photrans|掛|か}}けてなるものか
+{{Photrans|仇|かたき}}{{Photrans|討|う}}ち　{{Photrans|引裂|ひきさ}}け
+{{Photrans|今|いま}}こそ{{Photrans|復讐|ふくしゅう}}の{{Photrans|鉄槌|てっつい}}を
 
-若是在见证一切的他们眼中　我们连绝望可能都多余了吧
-若是在深爱一切的他们眼中　我们连相残可能都不配了吧
-深陷于这正义粉饰的愚蠢中　教唆着臣民阻挠光辉的悸动
-不如抬头再看看绚烂的星空　告诉我世界还能照常毁灭吗
-</poem>
+DIE!　DIE!!　DIE!!!
+DIE!　DIE!!　DIE!!!
+
+{{Photrans|行|い}}け　{{Photrans|戦|たたか}}え
+{{Photrans|奴|やつ}}らは{{Photrans|殺|ころ}}して{{Photrans|然|しか}}るべき{{Photrans|獣|けもの}}
+{{Photrans|荒野|こうや}}を　{{Photrans|駆|か}}けてく
+{{Photrans|骸|むくろ}}は{{Photrans|敵|てき}}の{{Photrans|咽喉|いんこう}}{{Photrans|元|もと}}へ
+
+{{Photrans|阿鼻叫喚|あびきょうかん}}　{{Photrans|執行|しっこう}}{{Photrans|猶予|ゆうよ}}{{Photrans|無|な}}し
+
+{{Photrans|何|なに}}も{{Photrans|聞|き}}こえない　{{Photrans|耳|みみ}}が{{Photrans|無|な}}いから
+{{Photrans|何|なに}}も{{Photrans|見|み}}えない　{{Photrans|眼|め}}が{{Photrans|無|な}}いから
+{{Photrans|何|なに}}も{{Photrans|感|かん}}じない　{{Photrans|神経|しんけい}}が{{Photrans|無|な}}いから
+{{Photrans|唯|ただ}}、{{Photrans|只管|ひたすら}}{{Photrans|刻|きざ}}む
+
+{{Photrans|嗚呼|ああ}}　あの{{Photrans|頃|ころ}}　{{Photrans|夢見|ゆめみ}}た{{Photrans|生命|せいめい}}に{{Photrans|還|かえ}}れないよ
+
+{{Photrans|行|い}}け　{{Photrans|戦|たたか}}え
+{{Photrans|骸|むくろ}}は{{Photrans|真実|しんじつ}}を{{Photrans|知|し}}り{{Photrans|地|ち}}に{{Photrans|還|かえ}}る
+あの{{Photrans|大空|おおぞら}}　{{Photrans|遥|はる}}かに
+{{Photrans|橋|はし}}を{{Photrans|架|か}}けて{{Photrans|簸|ひ}}た{{Photrans|行|い}}くよ
+|translated=
+少女 那稚气未脱的眼底
+潜藏着被凌辱的记忆
+憎恶少女那天赐的美貌的魔女
+我要审判你 FUCK YOU
+
+你制造那些毫无根据的谎言
+风言风语 把少女逼得走投无路 无处躲藏
+熄灭她的希望 摧残她的精神
+每天折磨着她
+
+DIE! DIE!! DIE!!!
+DIE! DIE!! DIE!!!
+
+冲啊 战斗啊 我的尸骸
+在荒野中奔驰 分裂死亡
+靠着本能攻击
+就算受了伤 反正我已经死了
+
+少女 刻在她身上的丑陋疤痕 日夜折磨着她
+少女 被痛苦地教唆
+“杀了他们啊”“杀啊”
+不能这样 FUCK YOU
+
+报复惩戒与教唆
+这就是这个混蛋挂在脸上的慈悲么
+复仇 撕碎
+今天就是复仇的铁锤落下的时候
+
+DIE! DIE!! DIE!!!
+DIE! DIE!! DIE!!!
+
+冲啊 战斗啊 那些家伙
+只不过是该杀掉的畜生
+在荒野奔驰的我的尸骸啊
+冲向敌人的咽喉
+
+惨叫不绝于耳 制裁绝无怜悯
+
+什么也听不到 因为我已没有耳朵
+什么也看不到 因为我已没有眼睛
+什么也感觉不到 因为我已没有神经
+只有无尽地屠戮
+
+啊啊 已经找不回 梦里才能看到的我的生命
+
+冲啊 战斗啊 我的尸骸
+终回到了真实的净土
+我在那广阔的天空
+架起桥梁奔向远方
+}}

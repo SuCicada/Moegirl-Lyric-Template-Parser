@@ -51,6 +51,7 @@
     window.onload = async () => {
 
         res = readFile("test.txt")
+        // console.log(res)
         document.getElementById("main").innerHTML = res
         source = ["../src/jquery.min.js"
             , "../src/utils.js"
@@ -58,7 +59,7 @@
         ]
         dist = "../dist/moelyrics.min.js"
         env = "dist"
-        env = "dev"
+        // env = "dev"
         if (env === "dev") {
             for (const s of source) {
                 await loadJS(s)

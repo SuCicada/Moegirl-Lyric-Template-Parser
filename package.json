@@ -4,7 +4,8 @@
   "description": "<h1 align='center' style=\"color: #228b22\">\r     Moegirl-Lyric-Template-Parser\r </h1>",
   "main": "moelyrics.js",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "gulp-uglify": "^3.0.2"
   },
   "devDependencies": {
     "gulp": "^4.0.2",

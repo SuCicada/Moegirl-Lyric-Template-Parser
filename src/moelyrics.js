@@ -12,19 +12,18 @@ if (window.AUTO_PARSE_MOELYRICS || window.AUTO_PARSE_MOELYRICS != false) {
 
 window.parseMoeLyrics = parseMoeLyrics
 
-function loadJS(url) {
-    return new Promise((resolve, reject) => {
-        const script = document.createElement('script');
-        script.type = 'text/javascript';
-        script.src = url;
-        script.onload = function () {
-            console.log(url + " load success")
-            resolve && resolve();
-        };
-        moelyrics
-        document.getElementsByTagName('head')[0].appendChild(script);
-    })
-}
+// function loadJS(url) {
+//     return new Promise((resolve, reject) => {
+//         const script = document.createElement('script');
+//         script.type = 'text/javascript';
+//         script.src = url;
+//         script.onload = function () {
+//             console.log(url + " load success")
+//             resolve && resolve();
+//         };
+//         document.getElementsByTagName('head')[0].appendChild(script);
+//     })
+// }
 
 function clickPTB() {
     const button = $("#photrans-button");
@@ -50,13 +49,14 @@ function parseMoeLyrics(text) {
     let colorReg = /{{color\|([#\w]+)\|(((?!{{color)[\w\W])+?)}}/g
     let lyricKai = {}
     let lyrics = text
-        // 提取 style
-        .replace(/\s*({{PT\/B}}|{{Photrans2\/button}})\s*/g, _ => {
+        // 替换按钮
+        .replace(/\s*({{PT\/B}}|{{Photrans\/button}}|{{Photrans2\/button}})\s*/g, _ => {
             /* html */
             return `<div style="text-align: right;" id="photrans-button" onclick="clickPTB()" data-to-visible="开启注音" data-to-hidden="关闭注音">` +
                 `[<a href="javascript: void(0);" style="pointer-events: none;" disable>关闭注音</a>]` +
                 `</div>`
         })
+        // 提取 style
         // 提取开头中用于 css 中的 style
         .replace(/\|(lstyle|rstyle|reserveWidth|width)=([\w\W]+?)(?=(\||}}))/g,
             (_, key, value) => {
@@ -70,7 +70,7 @@ function parseMoeLyrics(text) {
         // 整理回车, 用于之后的 br 换行替换, 以防乱格式
         .replace(/\n/g, `<br>`)
         // PT lyric
-        .replace(/{{(PT|Photrans2|ruby)\|(.+?)\|(.+?)}}/g,
+        .replace(/{{(PT|Photrans|Photrans2|ruby)\|(.+?)\|(.+?)}}/g,
             (match, _, word, hiragana, index, str) => {
                 // for eg: {{ruby|ニイハオハンユー|你好汉语|ja|zh}}
                 hiragana = hiragana.replace(/\|.*/, '')
@@ -102,8 +102,11 @@ function parseMoeLyrics(text) {
                 lyricKai[key] = value.trim()
                 return ""
             })
-        // .println()
-        .replace(/{{LyricsKai(\w\W)*}}/, (_, str) => {
+    // console.log(lyricKai)
+    lyrics = lyrics
+        .println()
+        .replace(/{{LyricsKai([\w\W])*}}/, (_, str) => {
+            console.log("replace LyricsKai")
             return `
         <div class="Lyrics Lyrics-has-ruby" style="width:calc(${style['width']} - ${style['reserveWidth']});">
         ${(() => {

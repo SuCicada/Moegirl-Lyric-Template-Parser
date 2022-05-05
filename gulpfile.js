@@ -1,5 +1,6 @@
 const gulp = require('gulp');
 const concat = require('gulp-concat');
+const uglify = require('gulp-uglify')
 
 //js文件打包
 gulp.task('jsmin', (done) => {
