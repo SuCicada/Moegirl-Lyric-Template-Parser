@@ -2,6 +2,7 @@
 //     jquery: "https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"
 //     , utils: window['DEBUG'] ? "utils.js" : "https://sucicada.github.io/Moegirl-Lyric-Template-Parser/utils.js"
 // }
+// import * as utils from "./utils.js";
 if (window.AUTO_PARSE_MOELYRICS || window.AUTO_PARSE_MOELYRICS != false) {
     // if (AUTO_PARSE_MOELYRICS) {
     console.log("AUTO_PARSE_MOELYRICS = true")
@@ -70,7 +71,7 @@ function parseMoeLyrics(text) {
         // 整理回车, 用于之后的 br 换行替换, 以防乱格式
         .replace(/\n/g, `<br>`)
         // PT lyric
-        .replace(/{{(PT|Photrans|Photrans2|ruby)\|(.+?)\|(.+?)}}/g,
+        .replace(/{{(PT|Photrans|Photrans2|ruby|Ruby)\|(.+?)\|(.+?)}}/g,
             (match, _, word, hiragana, index, str) => {
                 // for eg: {{ruby|ニイハオハンユー|你好汉语|ja|zh}}
                 hiragana = hiragana.replace(/\|.*/, '')
